@@ -1,0 +1,272 @@
+:root {
+  --primary-color: #e52165;
+  --text-color: #333;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: inherit;
+}
+
+body {
+  background-color: #19216d;
+}
+
+html {
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+.player {
+  position: relative;
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+.player .icon-pause {
+  display: none;
+}
+
+.player.playing .icon-pause {
+  display: inline-block;
+  background-image: url("");
+}
+
+.player.playing .icon-play {
+  display: none;
+}
+
+.dashboard {
+  padding: 16px 16px 14px;
+  background-color: #fff;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  max-width: 480px;
+  z-index: 99999;
+  border-bottom: 1px solid #ebebeb;
+}
+
+/* HEADER */
+header {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+header h4 {
+  color: var(--primary-color);
+  font-size: 12px;
+}
+
+header h2 {
+  color: var(--text-color);
+  background: linear-gradient(60deg, #e21143, #ffb03a);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 21px;
+  letter-spacing: 1.4px;
+  font-weight: bold;
+}
+
+/* CD */
+.cd {
+  display: flex;
+  margin: auto;
+  width: 200px;
+}
+
+.cd-thumb {
+  width: 100%;
+  padding-top: 100%;
+  border-radius: 50%;
+  background-color: #333;
+  background-size: cover;
+  margin: auto;
+}
+
+/* CONTROL */
+.control {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 18px 0 8px 0;
+}
+
+.control .btn {
+  cursor: pointer;
+  color: #666;
+  padding: 18px;
+  font-size: 18px;
+}
+
+.control .btn.active {
+  color: var(--primary-color);
+}
+
+.control .btn-toggle-play {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  font-size: 24px;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--primary-color);
+}
+
+.progress {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 8px;
+  background: linear-gradient(-45deg, #ff855f, #ea4081, #23a6d5, #23d5ab);
+  background-size: 400% 400%;
+  animation: gradient 9s ease infinite;
+  outline: none;
+  -webkit-transition: 0.2s;
+  transition: opacity 0.2s;
+  cursor: pointer;
+}
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+.progress::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 18px;
+  background-color: var(--primary-color);
+  cursor: pointer;
+  border-radius: 50%;
+  clip-path: polygon(
+    0% 20%,
+    60% 20%,
+    60% 0%,
+    100% 50%,
+    60% 100%,
+    60% 80%,
+    0% 80%
+  );
+}
+.progress::-moz-range-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 18px;
+  height: 15px;
+  background-color: var(--primary-color);
+  cursor: pointer;
+  border-radius: 50%;
+  clip-path: polygon(
+    0% 20%,
+    60% 20%,
+    60% 0%,
+    100% 50%,
+    60% 100%,
+    60% 80%,
+    0% 80%
+  );
+  clip-path: polygon(
+    0% 20%,
+    60% 20%,
+    60% 0%,
+    100% 50%,
+    60% 100%,
+    60% 80%,
+    0% 80%
+  );
+}
+
+/* PLAYLIST */
+.playlist {
+  margin-top: 428px;
+  padding: 12px;
+}
+
+.song {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+  background-color: #fff;
+  padding: 8px 16px;
+  border-radius: 5px;
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
+}
+
+.song.active {
+  background-color: rgb(229 33 101 / 71%);
+}
+
+.song:active {
+  opacity: 0.8;
+}
+
+.song.active .option,
+.song.active .author,
+.song.active .title {
+  color: #fff;
+}
+
+.song .thumb {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background-size: cover;
+  margin: 0 8px;
+}
+
+.song .body {
+  flex: 1;
+  padding: 0 16px;
+}
+
+.song .title {
+  font-size: 18px;
+  color: var(--text-color);
+}
+
+.song .author {
+  font-size: 12px;
+  color: #999;
+}
+#like-heart {
+  color: #d1cbcb;
+  font-size: 22.8px;
+  cursor: pointer;
+}
+.song .heart {
+  animation: effect-heart 0.4s linear;
+}
+@keyframes effect-heart {
+  0% {
+    transform: rotate(60deg) scale(1.7);
+  }
+  40% {
+    transform: rotate(0deg) scale(1);
+  }
+  41% {
+    transform: rotate(360deg) scale(1);
+  }
+  100% {
+    transform: rotate(0deg) scale(1);
+  }
+}
+.song .heart i.fa-heart {
+  color: red;
+}
+
+.player-number {
+  display: flex;
+  justify-content: space-between;
+  color: var(--primary-color);
+  font-weight: 500;
+}
